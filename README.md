@@ -1,7 +1,7 @@
 ### Query collentions
 
 - Busca multipla
-```
+```json
 GET index/_search
 {
   "query": {
