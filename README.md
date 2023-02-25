@@ -14,7 +14,7 @@ GET index/_search
 ```
 
 - Busca com LIKE
-```
+```json
 GET index/_search
 {
   "from": 0, 
@@ -28,7 +28,7 @@ GET index/_search
 ```
 
 - Cria campo com valor de outro caso exista
-```
+```json
 POST index/_update_by_query
 {
   "script": {
@@ -44,7 +44,7 @@ POST index/_update_by_query
 ```
 
 - Busca os não listados
-```
+```json
 GET index/_search
 {
   "query": {
@@ -61,7 +61,7 @@ GET index/_search
 }
 ```
 - Contagem por cada valor
-```
+```json
 GET index/_search
 {
   "size": 0,
@@ -76,7 +76,7 @@ GET index/_search
 ```
 
 Contagem mês
-```
+```json
 GET index/_search
 {
   "size": 0,
