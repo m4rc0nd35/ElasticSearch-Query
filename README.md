@@ -13,7 +13,7 @@ GET index/_search
 }
 ```
 
-- Busca com LIKE
+- Busca tipo LIKE
 ```json
 GET index/_search
 {
@@ -22,6 +22,21 @@ GET index/_search
   "query": {
     "wildcard": {
       "marcondes.keyword": "*cond*"
+    }
+  }
+}
+```
+
+- Busca tipo LIKE 
+```
+GET engine-dev-requests/_search
+{
+  "size": 1000,
+   "query": {
+    "match": {
+      "engine.flow":{
+        "query": "de03"
+      }
     }
   }
 }
@@ -108,5 +123,5 @@ GET index/_search
       }
     }
   }
-  ```
 ```
+
