@@ -133,7 +133,7 @@
   "query": {
     "match": {
       "name": {
-        "query": "jean",
+        "query": "moto carro",
         "minimum_should_match": "50%"
       }
     }
@@ -141,3 +141,17 @@
 }
 ```
 
+### Minimo 2 match
+- POST /produtos/_search
+```json
+{
+  "query": {
+    "match": {
+      "name": {
+        "query": "carro moto",
+        "minimum_should_match": 2
+      }
+    }
+  }
+}
+```
