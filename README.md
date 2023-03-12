@@ -155,3 +155,15 @@
   }
 }
 ```
+
+### Busca prefixo no inicio
+- GET /produtos/_search
+```json
+{
+  "query": {
+    "prefix": {
+      "name": "carlos"
+    }
+  }
+}
+```
