@@ -7,7 +7,7 @@
   "query": {
     "terms": {
       "name.keyword": [ "joao", "maria" ],
-      "boost": 1.0
+      "boost": 1.0 // altera o offset do score
     }
   }
 }
@@ -177,6 +177,6 @@
     "min_gram": 4,
     "max_gram": 6
   },
-  "text": "jean marcondesaraujo da silva"
+  "text": "barra de chocolate meio amargo"
 }
 ```
