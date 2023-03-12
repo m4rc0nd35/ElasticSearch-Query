@@ -181,3 +181,42 @@
   "text": "barra de chocolate meio amargo"
 }
 ```
+
+### Exemplo cria um filtro autocomplete
+- PUT /produtos
+```json
+{
+  "aliases": {},
+  "mappings": {},
+  "settings": {
+    "routing": {
+      "allocation": {
+        "include": {
+          "_tier_preference": "data_content"
+        }
+      }
+    },
+    "number_of_shards": "1",
+    "analysis": {
+      "filter": {
+        "filtro_autocomplete": {
+          "type": "edge_ngram",
+          "min_gram": "2",
+          "max_gram": "20"
+        }
+      },
+      "analyzer": {
+        "autocomplete": {
+          "filter": [
+            "lowercase",
+            "filtro_autocomplete"
+          ],
+          "type": "custom",
+          "tokenizer": "standard"
+        }
+      }
+    },
+    "number_of_replicas": "2"
+  }
+}
+```
