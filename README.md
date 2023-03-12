@@ -4,6 +4,7 @@
 - GET index/_search
 ```json
 {
+  "_source":["name"] // retornar apenas fiields listados aqui
   "query": {
     "terms": {
       "name.keyword": [ "joao", "maria" ],
