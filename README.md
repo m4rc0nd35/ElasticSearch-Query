@@ -167,3 +167,16 @@
   }
 }
 ```
+
+### Analiza o janelamento de um texto
+- GET /_analyze
+```json
+{
+  "tokenizer": {
+    "type": "ngram",
+    "min_gram": 4,
+    "max_gram": 6
+  },
+  "text": "jean marcondesaraujo da silva"
+}
+```
