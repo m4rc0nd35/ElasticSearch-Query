@@ -220,3 +220,28 @@
   }
 }
 ```
+
+### Clonar e checar se existe
+```json
+POST index/_update_by_query
+{
+  "script": {
+    "source": "ctx._source.engine.flow_activity_id = ctx._source.engine.flow",
+    "lang": "painless"
+  },
+  "query": {
+    "bool": {
+      "must": {
+        "exists":{
+          "field":"engine.flow"
+        }
+      }, 
+      "must_not": {
+        "exists": {
+          "field": "engine.flow_activity_id"
+        }
+      }
+    }
+  }
+}
+```
