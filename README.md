@@ -1,5 +1,72 @@
 ### Query collentions
 
+### Aggregations métricas
+```json
+GET index/_search
+{
+  "size": 0,
+  "aggs": {
+    "flows": {
+      "terms": {
+        "field": "flow_name.keyword"
+      },
+      "aggs": {
+        "last_seven_days": {
+          "date_range": {
+            "field": "finished_at",
+            "ranges": [
+              {
+                "from": "2023-04-05T23:00:00",
+                "to": "2023-04-12T23:00:00"
+              }
+            ]
+          },
+          "aggs": {
+            "success": {
+              "filter": {
+                "term": {
+                  "status.keyword": "success"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+### Seta os campo que devem ser retornados + sort
+```json
+- GET index/_search
+{
+  "from": 0, 
+  "size": 5, 
+  "fields": [
+    "flow_name",
+    "flow_id",
+    "started_at",
+    "duration",
+    "status",
+    "finished_at"
+    ],
+  "query": {
+    "match": {
+      "flow_name.keyword": "atualiza-produto-bling-para-flexy"
+    }
+  }, 
+  "sort": [
+    {
+      "started_at": {
+        "order": "desc"
+      }
+    }
+  ],
+  "_source": false
+}
+```
+
 ### Busca multipla
 - GET index/_search
 ```json
