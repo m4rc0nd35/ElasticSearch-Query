@@ -28,6 +28,15 @@
               "value": "fail"
             }
           }
+        },
+        {
+          "multi_match": {
+            "query": "cerveja fabricada por: Patagonia",
+            "fields": [
+              "http.response.body",
+              "http.request.body"
+            ]
+          }
         }
       ]
     }
