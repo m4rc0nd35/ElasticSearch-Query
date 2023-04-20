@@ -1,8 +1,42 @@
 ### Query collentions
 
-### Aggregations métricas
+#### Query por multiplos termos
+- GET index/_search
 ```json
-GET index/_search
+{
+  "fields": [],
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "term": {
+            "engine.step.keyword": {
+              "value": "envia"
+            }
+          }
+        },
+        {
+          "term": {
+            "engine.flow_activity_id.keyword": {
+              "value": "6dc5fe03-b8e9"
+            }
+          }
+        },
+        {
+          "term": {
+            "status.keyword": {
+              "value": "fail"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
+```
+### Aggregations métricas
+- GET index/_search
+```json
 {
   "size": 0,
   "aggs": {
@@ -38,8 +72,8 @@ GET index/_search
 ```
 
 ### Seta os campo que devem ser retornados + sort
-```json
 - GET index/_search
+```json
 {
   "from": 0, 
   "size": 5, 
