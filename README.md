@@ -1,6 +1,66 @@
-### Query collentions
+# Query collentions
 
-#### Query por multiplos termos
+### Status com terms
+- GET engine-apresentacao-requests/_search
+```json
+{
+  "query": {
+    "terms": {
+      "status": ["info", "success"] 
+    }
+  }
+}
+
+get engine-dev-flows/_search
+{
+  "size": 0,
+  "query": {
+    "bool": {
+      "filter": {
+        "range": {
+          "updated_at": {
+            "gte": "now-6d/d"
+            //"gte": "2023-06-01"
+          }
+        }
+      }
+    }
+  },
+  "aggs": {
+    "day_of_week": {
+      "date_histogram": {
+        "field":             "updated_at",
+        "calendar_interval": "day",
+        "format":            "EEE",
+        "extended_bounds": {
+          "min": "now/d",
+          "max": "now"
+        }
+      },
+      "aggs": {
+        "warning": {
+          "filter": {
+            "term": {"status": "warning"}
+          }
+        },
+        "success": {
+          "filter": {
+            "terms":{
+              "status": ["success","info"]
+            }
+          }
+        },
+        "fail": {
+          "filter": {
+            "term": {"status": "fail"}
+          }
+        }
+      }
+    }
+  }
+}
+```
+### Query por multiplos termos
 - GET index/_search
 ```json
 {
