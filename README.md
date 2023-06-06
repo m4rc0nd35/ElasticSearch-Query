@@ -4,15 +4,6 @@
 - GET engine-apresentacao-requests/_search
 ```json
 {
-  "query": {
-    "terms": {
-      "status": ["info", "success"] 
-    }
-  }
-}
-
-get engine-dev-flows/_search
-{
   "size": 0,
   "query": {
     "bool": {
