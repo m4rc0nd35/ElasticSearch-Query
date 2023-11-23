@@ -243,6 +243,15 @@
 ```json
 {
   "size": 0,
+  "query": {
+    "range": {
+      "updated_at": {
+        "gte": "2023-11-22",
+        "lte": "2023-11-22",
+        "time_zone": "-03:00"
+      }
+    }
+  },
   "aggs": {
     "status_count": {
       "terms": {
